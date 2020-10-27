@@ -24,7 +24,7 @@ function Object:initFields(o, fields)
 end
 
 
-function Object:__call(fields)
+function Object:new(fields)
     local o = {}
     Object:initFields(o, fields)
     return setmetatable(o, Object)

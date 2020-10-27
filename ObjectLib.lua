@@ -1,6 +1,6 @@
 -- CREATED BY Elektrum, The only thing you are asked to keep when modifing is those two first line. Thanks
--- THERE IS NO COPYRIGHT YOU CAN MODIFIE IT AT OUR OWN RISK. And you can use it however you want.
---------Version 1.1--------
+-- THERE IS NO COPYRIGHT YOU CAN MODIFIE IT AT OUR OWN RISK.
+--------Version 1.0--------
 
 local Object = {}
 Object.isClass = function() return true end
@@ -30,16 +30,14 @@ function Object:__call(fields)
     return setmetatable(o, Object)
 end
 
--- transform the table given in argument into a class. It also return the new class 
 function newClass(table, super)
 
     table.__index = table
     table.super = super or Object
     setmetatable(table,table.super)
-    
-    -- the constructor of the new class
-    function table:__call(fields)
-        local o = table.super.__call(table, fields)
+
+    function table:new(fields)
+        local o = table.super.new(table, fields)
         Object.initFields(table, o, fields)
         setmetatable(o,table)
         if o.OnNew ~= nil then o:OnNew() end

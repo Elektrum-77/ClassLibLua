@@ -1,6 +1,6 @@
 -- CREATED BY Elektrum, The only thing you are asked to keep when modifing is those two first line. Thanks
 -- THERE IS NO COPYRIGHT YOU CAN MODIFIE IT AT OUR OWN RISK.
---------Version 1.0--------
+--------Version 1.1--------
 
 local Object = {}
 Object.isClass = function() return true end
@@ -31,7 +31,7 @@ function Object:new(fields)
 end
 
 function newClass(table, super)
-
+    table = table or {}
     table.__index = table
     table.super = super or Object
     setmetatable(table,table.super)

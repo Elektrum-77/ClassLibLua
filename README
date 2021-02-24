@@ -1,0 +1,32 @@
+HOW TO USE :
+-- first require the library where you want to create a class
+local Object = require "ObjectLib"
+
+
+-- there more than one way to create your calss but they are all the same
+
+local MyClass = newClass({}, Object)
+
+local MyClass = newClass()
+
+local MyClass = {}
+newClass(MyClass)
+
+
+-- now to add a field to the class you will have to add it to MyClass.fields
+-- the downside in this librairy is that you can't have a field without a default value but who wouldn't need it anyway ?
+MyClass.fields = {
+  name = "Roberto",
+}
+
+-- to use this field you don't have to do anything out of the ordinary
+function MyClass:sayName()
+  print(self.name)
+end
+
+-- to create an object of your class you can do something like this
+MyObject = MyClass:new({name = "Angela"})
+
+-- then use it's method like this :
+MyObject:sayName()
+-- this will print Angela
